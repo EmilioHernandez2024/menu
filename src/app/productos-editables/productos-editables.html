@@ -1,0 +1,45 @@
+<div class="container mt-5">
+  <div class="card shadow-lg border-0 rounded-lg">
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0">Editar producto</h4>
+    </div>
+
+    <div class="card-body">
+      <form #f="ngForm" (ngSubmit)="guardarCambios()">
+        <div class="form-group mb-3">
+          <label>Título</label>
+          <input type="text" name="titulo" class="form-control" [(ngModel)]="producto.titulo" required>
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Descripción</label>
+          <textarea name="descripcion" class="form-control" [(ngModel)]="producto.descripcion"></textarea>
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Precio</label>
+          <input type="number" name="precio" class="form-control" [(ngModel)]="producto.precio" required>
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Categoría</label>
+          <input type="text" name="categoria" class="form-control" [(ngModel)]="producto.categoria">
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+          <button type="submit" class="btn btn-success">
+            <i class="bi bi-check-circle"></i> Guardar cambios
+          </button>
+
+          <button type="button" class="btn btn-danger" (click)="eliminarProducto()">
+            <i class="bi bi-trash"></i> Eliminar
+          </button>
+
+          <button type="button" class="btn btn-secondary" (click)="cancelar()">
+            <i class="bi bi-arrow-left"></i> Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,26 +1,27 @@
 <div class="container mt-5">
   <div class="card shadow-lg border-0 rounded-lg">
     <div class="card-header bg-primary text-white">
-      <h4 class="mb-0">Nuevo Producto para Menu</h4>
+      <h4 class="mb-0">Nuevo Producto para Menú</h4>
     </div>
 
     <div class="card-body">
       <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-
         <div class="form-group">
           <label for="titulo">Título</label>
-          <input type="text" id="titulo" class="form-control" name="titulo" [(ngModel)]="producto.titulo" placeholder="Nombre del producto" required>
+          <input type="text" id="titulo" class="form-control" name="titulo"
+                 [(ngModel)]="producto.titulo" placeholder="Nombre del producto" required>
         </div>
 
         <div class="form-group">
           <label for="descripcion">Descripción</label>
-          <textarea id="descripcion" class="form-control" name="descripcion"[(ngModel)]="producto.descripcion" rows="3"placeholder="Descripción detallada del producto"></textarea>
+          <textarea id="descripcion" class="form-control" name="descripcion"
+                    [(ngModel)]="producto.descripcion"
+                    rows="3" placeholder="Descripción detallada del producto"></textarea>
         </div>
 
         <div class="form-group">
           <label for="precio">Precio</label>
-          <input type="number" id="precio" class="form-control" name="precio"
-                 [(ngModel)]="producto.precio" placeholder="0.00" required>
+          <input type="number" id="precio" class="form-control" name="precio"[(ngModel)]="producto.precio" placeholder="0.00" required>
         </div>
 
         <div class="form-group">
@@ -33,10 +34,44 @@
         </div>
 
         <hr>
-
         <button type="submit" class="btn btn-success btn-block" [disabled]="f.invalid">
           Guardar Producto
         </button>
       </form>
     </div>
   </div>
+
+  <!-- Lista -->
+  <div class="card mt-3">
+    <div class="card-header">
+      <strong>Productos actuales ({{ productos?.length || 0 }})</strong>
+    </div>
+
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item d-flex justify-content-between align-items-start"
+          *ngFor="let p of productos; let i = index">
+        <div>
+          <strong>{{ i + 1 }}.</strong> {{ p.titulo }} — {{ p.categoria }} — 
+          <strong>${{ p.precio }}</strong>
+          <div class="small text-muted">{{ p.descripcion }}</div>
+        </div>
+
+        <div>
+          <button class="btn btn-warning btn-sm me-2" [routerLink]="['/productos/editar', p.id]">
+          <i class="bi bi-pencil-square"></i> Editar / Eliminar
+          </button>
+        </div>
+      </li>
+      <li class="list-group-item text-center" *ngIf="!productos || productos.length === 0">
+        No hay productos aún.
+      </li>
+    </ul>
+  </div>
+
+  <!-- Hijo -->
+<app-productos-editables
+  *ngIf="productoSeleccionado"
+  (actualizado)="refrescarLista()"
+  (cancelar)="productoSeleccionado = null">
+</app-productos-editables>
+</div>
