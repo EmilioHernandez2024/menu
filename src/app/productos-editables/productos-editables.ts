@@ -19,6 +19,7 @@ export class ProductosEditables implements OnInit {
   private router = inject(Router);
 
   producto: Productos = new Productos('', '', 0, '');
+  categorias = ['Aperitivos / Entrantes', 'Ensaladas', 'Platos Principales', 'Pastas', 'Postres', 'Bebidas'];
   idProducto: string = '';
 
   ngOnInit(): void {

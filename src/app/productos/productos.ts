@@ -20,7 +20,7 @@ export class Producto implements OnInit {
 
   producto: Productos = new Productos('', '', 0, '');
   productos: Productos[] = []; 
-  categorias = ['Electrónica', 'Ropa', 'Hogar', 'Alimentos'];
+  categorias = ['Aperitivos / Entrantes', 'Ensaladas', 'Platos Principales', 'Pastas', 'Postres', 'Bebidas'];
   productoSeleccionado: Productos | null = null;
   indexSeleccionado: number | null = null;
 
@@ -52,8 +52,8 @@ export class Producto implements OnInit {
       this.producto = new Productos('', '', 0, '');
       this.cargarLista();
     },
-    error: err => {
-      console.error('Error al guardar:', err);
+    error: erro => {
+      console.error('Error al guardar:', erro);
       Swal.fire('Error', 'No se pudo guardar el producto.', 'error');
     }
   });
