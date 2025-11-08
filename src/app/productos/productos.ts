@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import Swal from 'sweetalert2';
 import { ProductosService } from '../productos.service';
 import { Productos } from '../../producto.model';
 import { ProductosEditables } from '../productos-editables/productos-editables';
 import { RouterLink } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-productos',
@@ -38,7 +38,7 @@ export class Producto implements OnInit {
         ...value
       }));
     },
-    error: err => console.error('Error al cargar productos:', err)
+    error: erro => console.error('Error al cargar productos:', erro)
   });
 }
 
@@ -63,7 +63,7 @@ export class Producto implements OnInit {
     this.productoSeleccionado = { ...p };
     this.indexSeleccionado = index;
   }
-
+ 
   refrescarLista() {
     this.cargarLista();
   }
