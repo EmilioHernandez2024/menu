@@ -27,7 +27,7 @@ export class Producto implements OnInit {
   ngOnInit(): void {
     this.cargarLista();
   }
-
+ 
   cargarLista() {
   this.productosService.cargar_productos().subscribe({
     next: (data: any) => {
@@ -38,7 +38,7 @@ export class Producto implements OnInit {
         ...value
       }));
     },
-    error: erro => console.error('Error al cargar productos:', erro)
+    error: error => console.error('Error al cargar productos:', error)
   });
 }
 
@@ -52,8 +52,8 @@ export class Producto implements OnInit {
       this.producto = new Productos('', '', 0, '');
       this.cargarLista();
     },
-    error: erro => {
-      console.error('Error al guardar:', erro);
+    error: error => {
+      console.error('Error al guardar:', error);
       Swal.fire('Error', 'No se pudo guardar el producto.', 'error');
     }
   });

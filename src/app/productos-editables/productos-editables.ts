@@ -32,7 +32,7 @@ export class ProductosEditables implements OnInit {
             this.producto = { ...data[this.idProducto], id: this.idProducto };
           }
         },
-        error: err => console.error('Error al cargar producto:', err)
+        error: error => console.error('Error al cargar producto:', error)
       });
     }
   }
@@ -49,8 +49,8 @@ export class ProductosEditables implements OnInit {
           this.router.navigate(['/productos']);
         });
       },
-      error: (err) => {
-        console.error('Error al actualizar:', err);
+      error: (error) => {
+        console.error('Error al actualizar:', error);
         Swal.fire('Error', 'No se pudo actualizar el producto.', 'error');
       }
     });
@@ -77,8 +77,8 @@ export class ProductosEditables implements OnInit {
               this.router.navigate(['/productos']);
             });
           },
-          error: err => {
-            console.error('Error al eliminar:', err);
+          error: error => {
+            console.error('Error al eliminar:', error);
             Swal.fire('Error', 'No se pudo eliminar el producto.', 'error');
           }
         });
