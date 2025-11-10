@@ -31,8 +31,9 @@ export class Producto implements OnInit {
   cargarLista() {
   this.productosService.cargar_productos().subscribe({
     next: (data: any) => {
+      //si la base no trae nada (está vacío), dejo la lista vacía y no hago más nad
       if (!data) { this.productos = []; return; }
-
+   //aqui lo que hace es convertir lo que viene de la base (un objeto con ids como claves) en un array de productos
       this.productos = Object.entries(data).map(([key, value]: [string, any]) => ({
         id: key,
         ...value

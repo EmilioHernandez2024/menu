@@ -23,12 +23,19 @@ export class ProductosEditables implements OnInit {
   idProducto: string = '';
 
   ngOnInit(): void {
+    // snapshot sirve para hacer una foto del momento actual de la ruta
     this.idProducto = this.route.snapshot.paramMap.get('id') || '';
 
+
+    //aqui cargo el producto a editar
     if (this.idProducto) {
+      //llamadar al servicio
       this.productosService.cargar_productos().subscribe({
         next: (data: any) => {
+
+          //producto específico dentro de ese objeto usando el idProducto
           if (data && data[this.idProducto]) {
+          //crea un nuevo objeto del producto con todos sus campos
             this.producto = { ...data[this.idProducto], id: this.idProducto };
           }
         },
